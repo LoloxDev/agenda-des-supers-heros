@@ -2,7 +2,7 @@
 
 $dt = new \DateTime();
 
-include '../fonctions/code_generation.php';
+dirname(__FILE__) . '/../fonctions/code_generation.php';
 
 if ( isset( $_POST['submit'] ) ) {
 
@@ -20,11 +20,8 @@ if ( isset( $_POST['submit'] ) ) {
 
     header('Refresh: 2;../enregistrement2.php');
     exit();
-
 }
 
 if ( isset( $_POST['submit2'] ) ) {
-
     $rdv = $_POST['rdv'];
-    
 }
