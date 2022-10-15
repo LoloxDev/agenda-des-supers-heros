@@ -9,14 +9,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+    <script src="js/main.js"></script>
     <title>Entrée des donnateurs</title>
 </head>
 <body>
     <!-- Debut du formulaire -->
-    <form enctype="multipart/form-data" action="exec/traitement_entree.php" method="post">
+    <form enctype="multipart/form-data" action="exec/traitement_entree.php" method="post" name="test">
             <legend>Formulaire de rentré</legend>
                 
-                <div>
+                <div id="bloodChoice">
                     <label for="blood">Choisissez un type de sang :</label>
                     <select name="blood" id="bloodList">
 
