@@ -1,4 +1,7 @@
 <?php
+
+include dirname(__FILE__) . '/config.php';
+
 function generate_code($heure, $type, $rdv) {
     // Commence par noter l'heure du rendez vous
     // enlever 8 ou 9 minutes si le rendez vous est special
@@ -18,10 +21,10 @@ function generate_code($heure, $type, $rdv) {
         $result = $result."1";
     }
     // Ajoute le numero du rendez vous de la journée pour les cas speciaux
-    $counter = (int) file_get_contents(dirname(__FILE__) . '/../data/counter.txt') +1 ;
+    $counter = (int) file_get_contents(FILE_COUNTER) +1 ;
   
     $counter = str_pad($counter , 4 , "0" , STR_PAD_LEFT);
-    file_put_contents(dirname(__FILE__) . '/../data/counter.txt',$counter);
+    file_put_contents(FILE_COUNTER,$counter);
     
     $result = $result.$counter;
 
