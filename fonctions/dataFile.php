@@ -16,7 +16,7 @@ function loadFile(?string $nameFile = null):array {
     return $data;
 }
 
-function saveLine(?string $timeCode, ?string $codeDoneur, bool $passe = false, ?string $nameFile = null) {
+function saveLine(?string $timeCode, ?string $codeDoneur, bool $passe = false, ?string $nameFile = null):void {
     if(empty($nameFile)) {
         $nameFile = FILE_DATA_CODE;
     }
@@ -24,7 +24,7 @@ function saveLine(?string $timeCode, ?string $codeDoneur, bool $passe = false, ?
     file_put_contents($nameFile, $section."\n".$timeCode . "," . $codeDoneur . "," .($passe?"true":"false"));
 }
 
-function listePassage(?string $nameFile = null) {
+function listePassage(?string $nameFile = null):?array {
     if(empty($nameFile)) {
         $nameFile = FILE_DATA_CODE;
     }
@@ -41,7 +41,7 @@ function listePassage(?string $nameFile = null) {
     return $data;
 }
 
-function donneurPasser(?string $timeCode, ?string $codeDoneur, ?string $nameFile = null) {
+function donneurPasser(?string $timeCode, ?string $codeDoneur, ?string $nameFile = null):void {
     if(empty($nameFile)) {
         $nameFile = FILE_DATA_CODE;
     }
@@ -61,6 +61,8 @@ function donneurPasser(?string $timeCode, ?string $codeDoneur, ?string $nameFile
     }
 }
 
-function clearFile() {
-
+function clearFile():void {
+    file_put_contents(FILE_COUNTER, "0000");
+    file_put_contents(FILE_DATA_DEF, "");
+    file_put_contents(FILE_DATA_CODE, "");
 }
