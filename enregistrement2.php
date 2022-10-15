@@ -12,29 +12,64 @@
     <title>Entrée des donnateurs</title>
 </head>
 <body>
-    <!-- Debut du formulaire -->
-    <form enctype="multipart/form-data" action="exec/traitement_entree.php" method="post">
+
+<?php include '../exec/traitement_entree.php';
+    if ($rdv == false) {
+
+    
+    echo '  
+            <form action="exec/traitement_entree.php" method="post">
+                <legend>Formulaire de rentré</legend>
+
+                    <fieldset id="rdv">
+
+                        <legend>Un rendez-vous est disponible pour h, acceptez vous le rendez vous ?</legend>
+
+                        <div>
+                          <input type="radio" id="oui" name="rdv" value="oui"
+                                 checked>
+                          <label for="oui">Oui</label>
+                        </div>
+
+                        <div>
+                          <input type="radio" id="non" name="rdv" value="non">
+                          <label for="non">Non</label>
+                        </div>
+
+                    </fieldset>
+
+                    <input type="submit" name="submit2" />
+            </form>';
+
+
+    } else {
+
+        echo '
+        <form action="exec/traitement_entree.php" method="post">
             <legend>Formulaire de rentré</legend>
-            
-                <fieldset id="rdv">
+        
+            <fieldset id="rdv">
 
-                    <legend>Un rendez-vous est disponible pour <?php ?>h, acceptez vous le rendez vous ?</legend>
+                <legend>Un rendez-vous est disponible pour h, acceptez vous le rendez vous ?</legend>
 
-                    <div>
-                      <input type="radio" id="oui" name="rdv" value="oui"
-                             checked>
-                      <label for="oui">Oui</label>
-                    </div>
+                <div>
+                  <input type="radio" id="oui" name="rdv" value="oui"
+                         checked>
+                  <label for="oui">Oui</label>
+                </div>
 
-                    <div>
-                      <input type="radio" id="non" name="rdv" value="non">
-                      <label for="non">Non</label>
-                    </div>
+                <div>
+                  <input type="radio" id="non" name="rdv" value="non">
+                  <label for="non">Non</label>
+                </div>
 
-                </fieldset>
+            </fieldset>
 
-                <input type="submit" name="submit2" />
-    </form>
-    <!-- Fin du formulaire -->
+            <input type="submit" name="submit2" />
+        </form>';
+
+    } ?>
+    
+    
 </body>
 </html>

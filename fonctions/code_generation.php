@@ -11,18 +11,21 @@ function generate_code($heure, $type, $rdv) {
     }
     // Ajoute le code du type de rendez vous
     $result = $result.strval($type);
-    //Ajoute un code pour dire si le donneur a un rendez vous ou non
+    // Ajoute un code pour dire si le donneur a un rendez vous ou non
     if ($rdv == false) {
         $result = $result."2";
     } else {
         $result = $result."1";
     }
     // Ajoute le numero du rendez vous de la journée pour les cas speciaux
-    $counter = (int) file_get_contents("fonctions/counter.txt") + 1;
+    $counter = (int) file_get_contents(dirname(__FILE__) . '/../data/counter.txt') +1 ;
+  
     $counter = str_pad($counter , 4 , "0" , STR_PAD_LEFT);
-    file_put_contents("fonctions/counter.txt",$counter);
+    file_put_contents(dirname(__FILE__) . '/../data/counter.txt',$counter);
+    
     $result = $result.$counter;
 
     return $result;
+    
 }
 ?> 
