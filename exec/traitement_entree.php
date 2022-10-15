@@ -2,17 +2,23 @@
 
 $dt = new \DateTime();
 
+include '../fonctions/code_generation.php';
 
 if ( isset( $_POST['submit'] ) ) {
 
-    echo $dt->format('H:i:s');
-    $typeBlood = $_POST['blood'];
+    if ($rdv == "oui") {
+        $rdv = true;
+    } else {
+        $rdv = false;
+    }
+
+    $heure = $dt->format('H:i:s');
+    $type = $_POST['blood'];
     $rdv = $_POST['rdv'];
+    
+    generate_code($heure, $type, $rdv);
 
-    echo($typeBlood);
-    echo($rdv);
-
-    header('Refresh: ../enregistrement2.php');
+    header('Refresh: 2;../enregistrement2.php');
     exit();
 
 }
@@ -20,7 +26,5 @@ if ( isset( $_POST['submit'] ) ) {
 if ( isset( $_POST['submit2'] ) ) {
 
     $rdv = $_POST['rdv'];
-
-    echo($rdv);
     
 }
