@@ -23,7 +23,8 @@ function saveLine(?string $timeCode, ?string $codeDoneur, bool $passe = false, ?
         $nameFile = FILE_DATA_CODE;
     }
     $section = file_get_contents($nameFile, true);
-    $test = substr($codeDoneur, count($codeDoneur)-4, 4);
+    $tabsplit = str_split($section);
+    $codecourt = "";
     file_put_contents($nameFile, $section."\n".$timeCode . ";" . $codeDoneur . ";" .($passe?"true":"false"));
 }
 
@@ -43,7 +44,6 @@ function listePassage(?string $nameFile = null):?array {
                 array_push($data, $tabDonneur);
             }
         }
-        
     }
     return $data;
 }
@@ -67,7 +67,7 @@ function donneurPasser(?string $timeCode, ?string $nameFile = null):void {
         }
     }
     var_dump($data);
-    //file_put_contents($nameFile, "");
+    file_put_contents($nameFile, "");
     foreach ($data as $value) {
         saveLine($value[0], $value[1], $value[2]=="true");
     }

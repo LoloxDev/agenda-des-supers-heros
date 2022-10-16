@@ -2,6 +2,13 @@
 
 include dirname(__FILE__) . '/fonctions/dataFile.php';
 
+function display($text) {
+    if(strlen($text) > 4) {
+        return substr($text, strlen($text)-4, 4);
+    }
+ return $text;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +30,7 @@ include dirname(__FILE__) . '/fonctions/dataFile.php';
                     if(trim($value[2]) == "false") { ?>
                         <tr>
                             <td>
-                                <?php echo $value[1]; ?>
+                                <?php echo display($value[1]); ?>
                             </td>
                         </tr>
                     <?php }
