@@ -66,7 +66,6 @@ function donneurPasser(?string $timeCode, ?string $nameFile = null):void {
             array_push($data, $tabDonneur);
         }
     }
-    var_dump($data);
     file_put_contents($nameFile, "");
     foreach ($data as $value) {
         saveLine($value[0], $value[1], $value[2]=="true");
