@@ -1,6 +1,7 @@
 <?php 
 
 include dirname(__FILE__) . '/config.php';
+include dirname(__FILE__) . '/code_generation.php';
 
 function loadFile(?string $nameFile = null):array {
     if(empty($nameFile)) {
@@ -70,6 +71,30 @@ function donneurPasser(?string $timeCode, ?string $nameFile = null):void {
     foreach ($data as $value) {
         saveLine($value[0], $value[1], $value[2]=="true");
     }
+}
+
+function heurePresence():array {
+    if(empty($nameFile)) {
+        $nameFile = FILE_DATA_CODE;
+    }
+    $fileData = loadFile();
+    $tab = array();
+    $section = file_get_contents($nameFile, true);
+    $data = array();
+    $section = str_replace("\r", "\n", $section);
+    $tabAllDonneur = explode("\n", $section);
+    foreach ($fileData as $value) {
+        if(count($value) > 2) {
+            $heure = $value[0].":0";
+            $code = generate_code($heure, $value[1], $value[2]);
+            foreach ($tabAllDonneur as $value) {
+                if($heure == $tabAllDonneur) {
+                    array_push($data, $value[0]);
+                }
+            }
+        }
+    }
+    return $data;
 }
 
 function clearFile():void {

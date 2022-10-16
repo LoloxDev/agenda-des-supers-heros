@@ -68,8 +68,15 @@ $newHour = str_replace(":","h", $newHour);
         <form action="exec/traitement_entree.php" method="post">
             <legend>Formulaire de rentré</legend>
         
-            <fieldset id="rdv">
+            <fieldset id="rdv">';
 
+
+        $tab = heurePresence();
+        var_dump($tab);
+        foreach ($tab as $key => $value) {
+            # code...
+        }
+        echo '
                 <legend>Le code barre du donneur est le :</legend>
 
                 <div>

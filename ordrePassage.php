@@ -2,6 +2,8 @@
 
 include dirname(__FILE__) . '/fonctions/dataFile.php';
 
+heurePresence();
+
 function display($text) {
     if(strlen($text) > 4) {
         return substr($text, strlen($text)-4, 4);
