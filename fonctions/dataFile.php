@@ -4,7 +4,7 @@ include dirname(__FILE__) . '/config.php';
 
 function loadFile(?string $nameFile = null):array {
     if(empty($nameFile)) {
-        $nameFile = DATA_FILE_DEF;
+        $nameFile = FILE_DATA_DEF;
     }
     $section = file_get_contents($nameFile, true);
     $data = array();

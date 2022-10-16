@@ -13,17 +13,37 @@
 </head>
 <body>
 
-<?php include '../exec/traitement_entree.php';
-    if ($rdv == false) {
+<?php 
 
-    
+include dirname(__FILE__) . '/fonctions/dataFile.php';
+$file = loadFile();
+
+function search($tab){
+
+    foreach ($tab as $key => $value) {
+        if (count($value)>3) {
+            if ($value[3] == 0) {
+                return $value[0];
+            }
+        }
+    }
+
+    return "0:0";
+}
+
+$newHour = search($file);
+$newHour = str_replace(":","h", $newHour);
+
+
+    if ($_GET["rdv"] == "false") {
+
     echo '  
             <form action="exec/traitement_entree.php" method="post">
                 <legend>Formulaire de rentré</legend>
 
                     <fieldset id="rdv">
 
-                        <legend>Un rendez-vous est disponible pour h, acceptez vous le rendez vous ?</legend>
+                        <legend>Un rendez-vous est disponible pour ' . $newHour . ', acceptez vous le rendez vous ?</legend>
 
                         <div>
                           <input type="radio" id="oui" name="rdv" value="oui"
@@ -50,17 +70,10 @@
         
             <fieldset id="rdv">
 
-                <legend>Un rendez-vous est disponible pour h, acceptez vous le rendez vous ?</legend>
+                <legend>Le code barre du donneur est le :</legend>
 
                 <div>
-                  <input type="radio" id="oui" name="rdv" value="oui"
-                         checked>
-                  <label for="oui">Oui</label>
-                </div>
-
-                <div>
-                  <input type="radio" id="non" name="rdv" value="non">
-                  <label for="non">Non</label>
+                  <input type="text" id="codeBar" name="code">
                 </div>
 
             </fieldset>
