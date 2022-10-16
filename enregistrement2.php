@@ -15,6 +15,26 @@
 
 <?php 
 
+include dirname(__FILE__) . '/fonctions/dataFile.php';
+$file = loadFile();
+
+function search($tab){
+
+    foreach ($tab as $key => $value) {
+        if (count($value)>3) {
+            if ($value[3] == 0) {
+                return $value[0];
+            }
+        }
+    }
+
+    return "0:0";
+}
+
+$newHour = search($file);
+$newHour = str_replace(":","h", $newHour);
+
+
     if ($_GET["rdv"] == "false") {
 
     echo '  
@@ -23,7 +43,7 @@
 
                     <fieldset id="rdv">
 
-                        <legend>Un rendez-vous est disponible pour h, acceptez vous le rendez vous ?</legend>
+                        <legend>Un rendez-vous est disponible pour ' . $newHour . ', acceptez vous le rendez vous ?</legend>
 
                         <div>
                           <input type="radio" id="oui" name="rdv" value="oui"

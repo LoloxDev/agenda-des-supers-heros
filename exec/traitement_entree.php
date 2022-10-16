@@ -2,7 +2,9 @@
 
 $dt = new \DateTime();
 
-dirname(__FILE__) . '/../fonctions/code_generation.php';
+
+include dirname(__FILE__) . '/../fonctions/code_generation.php';
+
 
 if ( isset( $_POST['submit'] ) ) {
 
