@@ -39,11 +39,14 @@ $newHour = str_replace(":","h", $newHour);
 
     echo '  
             <form action="exec/traitement_entree.php" method="post">
-                <legend>Formulaire de rentré</legend>
+                <div id="logo">
+                    <img src="img/EFS-logo.png" alt="logo EFS"/>
+                </div>
+                <legend>Formulaire de rentrée</legend>
 
                     <fieldset id="rdv">
 
-                        <legend>Un rendez-vous est disponible pour ' . $newHour . ', acceptez vous le rendez vous ?</legend>
+                        <legend class="secondTitle">Un rendez-vous est disponible pour ' . $newHour . ', acceptez vous le rendez vous ?</legend>
 
                         <div>
                           <input type="radio" id="oui" name="rdv" value="oui"
@@ -66,11 +69,14 @@ $newHour = str_replace(":","h", $newHour);
 
         echo '
         <form action="exec/traitement_entree.php" method="post">
+            <div id="logo">
+                <img src="img/EFS-logo.png" alt="logo EFS"/>
+            </div>
             <legend>Formulaire de rentré</legend>
         
             <fieldset id="rdv">
 
-                <legend>Le code barre du donneur est le :</legend>
+                <legend class="secondTitle">Le code barre du donneur est le :</legend>
 
                 <div>
                   <input type="text" id="codeBar" name="code">
