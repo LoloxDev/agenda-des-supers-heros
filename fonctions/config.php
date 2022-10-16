@@ -5,9 +5,9 @@ if (!defined('FILE_COUNTER')) {
 }
 
 if (!defined('FILE_DATA_DEF')) {
-    define("FILE_DATA_DEF", dirname(__FILE__) . '/../data/data.txt');
+    define("FILE_DATA_DEF", dirname(__FILE__) . '/../data/data.csv');
 }
 
 if (!defined('FILE_DATA_CODE')) {
-    define("FILE_DATA_CODE", dirname(__FILE__) . '/../data/dataCode.txt');
+    define("FILE_DATA_CODE", dirname(__FILE__) . '/../data/dataCode.csv');
 }
