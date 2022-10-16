@@ -15,8 +15,12 @@
 
 <?php 
 
+// On va chercher les données locales
+
 include dirname(__FILE__) . '/fonctions/dataFile.php';
 $file = loadFile();
+
+// On récupère les données du jour
 
 function search($tab){
 
@@ -32,8 +36,12 @@ function search($tab){
 }
 
 $newHour = search($file);
+
+// On remplace le ":" par un "h" pour avoir une heure lisible
+
 $newHour = str_replace(":","h", $newHour);
 
+/* Si le donneur n'a pas de rendez vous on affiche ce formulaire */
 
     if ($_GET["rdv"] == "false") {
 
@@ -66,6 +74,8 @@ $newHour = str_replace(":","h", $newHour);
 
 
     } else {
+
+        /* Sinon on affiche celui la */
 
         echo '
         <form action="exec/traitement_entree.php" method="post">
