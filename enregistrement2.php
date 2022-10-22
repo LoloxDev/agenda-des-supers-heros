@@ -15,8 +15,12 @@
 
 <?php 
 
+// On va chercher les données locales
+
 include dirname(__FILE__) . '/fonctions/dataFile.php';
 $file = loadFile();
+
+// On récupère les données du jour
 
 function search($tab){
 
@@ -32,18 +36,25 @@ function search($tab){
 }
 
 $newHour = search($file);
+
+// On remplace le ":" par un "h" pour avoir une heure lisible
+
 $newHour = str_replace(":","h", $newHour);
 
+/* Si le donneur n'a pas de rendez vous on affiche ce formulaire */
 
     if ($_GET["rdv"] == "false") {
 
     echo '  
             <form action="exec/traitement_entree.php" method="post">
-                <legend>Formulaire de rentré</legend>
+                <div id="logo">
+                    <img src="img/EFS-logo.png" alt="logo EFS"/>
+                </div>
+                <legend>Formulaire de rentrée</legend>
 
                     <fieldset id="rdv">
 
-                        <legend>Un rendez-vous est disponible pour ' . $newHour . ', acceptez vous le rendez vous ?</legend>
+                        <legend class="secondTitle">Un rendez-vous est disponible pour ' . $newHour . ', acceptez vous le rendez vous ?</legend>
 
                         <div>
                           <input type="radio" id="oui" name="rdv" value="oui"
@@ -64,8 +75,13 @@ $newHour = str_replace(":","h", $newHour);
 
     } else {
 
+        /* Sinon on affiche celui la */
+
         echo '
         <form action="exec/traitement_entree.php" method="post">
+            <div id="logo">
+                <img src="img/EFS-logo.png" alt="logo EFS"/>
+            </div>
             <legend>Formulaire de rentré</legend>
         
             <fieldset id="rdv">';

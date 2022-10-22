@@ -15,7 +15,10 @@
 <body>
     <!-- Debut du formulaire -->
     <form enctype="multipart/form-data" action="exec/traitement_entree.php" method="post" name="test">
-            <legend>Formulaire de rentré</legend>
+        <div id="logo">
+            <img src="img/EFS-logo.png" alt="logo EFS"/>
+        </div>
+            <legend class="title">Formulaire de rentrée</legend>
                 
                 <div id="bloodChoice">
                     <label for="blood">Choisissez un type de sang :</label>
@@ -31,7 +34,7 @@
 
                 <fieldset id="rdv">
 
-                    <legend>Le donneur a-t-il un rendez-vous?</legend>
+                    <legend class="secondTitle">Le donneur a-t-il un rendez-vous?</legend>
 
                     <div>
                       <input type="radio" id="oui" name="rdv" value="oui"
