@@ -9,9 +9,9 @@ body #logo {
   position: absolute;
   top: 10px;
   right: 10px;
-  width: 150px;
+  width: 150px !important;
 }
-body form {
+body form, body #form {
   position: relative;
   width: 100%;
   height: 100%;
@@ -21,12 +21,12 @@ body form {
   padding: 50px;
   text-align: center;
 }
-body form div {
+body form div, body #form div {
   margin: auto;
   width: fit-content;
   margin-bottom: 70px;
 }
-body form legend {
+body form legend, body #form legend {
   width: fit-content;
   margin: 40px auto;
   font-size: 1.3em;
@@ -58,6 +58,65 @@ body form input[type="submit"] {
 body form input[type="submit"]:hover {
   transform: scale(1.05);
 }
+td.td-order {
+  width: 100%;
+  font-size: 5em;
+  text-align: center;
+}
+body #form {
+  max-height: 90vh;
+  overflow: hidden;
+}
+table {
+  width: 90%;
+}
+table tr {
+  width: 100%;
+}
+table tr:nth-child(even) td {
+  background-color: rgb(216, 215, 215);
+}
+table tr:nth-child(odd) td {
+  background-color: rgb(236, 236, 236);
+}
+.table {
+  width: unset !important;
+}
+table td div {
+  width: 52px !important;
+}
+table tr {
+  width: 100%;
+  display: flex;
+}
+table td {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+td a {
+  padding: 10px 30px;
+  background-color: #e20020;
+  color: white;
+  transition: 0.2s;
+  cursor: pointer;
+  box-shadow: inset 0px 0px 5px white;
+}
+body form input[type="submit"]:hover, td a:hover {
+  transform: scale(1.05);
+}
 input {
   text-align: center;
+}
+.passe {
+  overflow-y: auto;
+}
+@media screen and (max-width: 974px) {
+  body #logo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 90px !important;
+  }
 }

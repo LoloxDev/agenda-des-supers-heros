@@ -19,7 +19,7 @@
 
     $typeDon = 3;
 
-    if(!empty($_GET) && array_key_exists("type", $_GET)) {
+    if (!empty($_GET) && array_key_exists("type", $_GET)) {
         $typeDon = intval($_GET["type"]);
     }
 
@@ -56,7 +56,7 @@
 
     /* Si le donneur n'a pas de rendez vous on affiche ce formulaire */
 
-    if ($_GET["rdv"] == "false") {
+    if ($_GET["rdv"] == "false" && $newHour != "0h0") {
 
     ?>
         <form action="exec/execAddDonneur.php" method="post">
@@ -100,6 +100,26 @@
 
         <script src="./js/enregistrementSRDV.js"></script>
 
+    <?php
+    } else if ($_GET["rdv"] == "false" && $newHour == "0h0") {
+    ?>
+        <form action="exec/execAddDonneur.php" method="post">
+        <input type="hidden" id="non" name="rdv" value="non">
+            <div id="logo">
+                <img src="img/EFS-logo.png" alt="logo EFS" />
+            </div>
+            <legend>Formulaire de rentrée</legend>
+
+            <fieldset id="rdv">
+
+                <legend class="secondTitle">Aucune heure disponible dans la journée.</legend>
+
+            </fieldset>
+
+            <input type="submit" name="submit2" />
+        </form>
+
+        <script src="./js/enregistrementSRDV.js"></script>
     <?php
     } else {
         /* Sinon on affiche celui la */
