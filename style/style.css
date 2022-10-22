@@ -58,3 +58,6 @@ body form input[type="submit"] {
 body form input[type="submit"]:hover {
   transform: scale(1.05);
 }
+input {
+  text-align: center;
+}

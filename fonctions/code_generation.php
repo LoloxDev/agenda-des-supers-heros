@@ -1,6 +1,7 @@
 <?php
 
-include dirname(__FILE__) . '/config.php';
+/* recupere les configurations */
+include dirname(__FILE__) . '/configMain.php';
 
 function generate_code($heure, $type, $rdv) {
     // Commence par noter l'heure du rendez vous
@@ -31,4 +32,4 @@ function generate_code($heure, $type, $rdv) {
     return $result;
     
 }
-?> 
+

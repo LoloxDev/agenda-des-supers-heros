@@ -1,5 +1,6 @@
 <?php
 
+/* pour lire les fichier */
 include dirname(__FILE__) . '/fonctions/dataFile.php';
 
 ?>
