@@ -17,9 +17,16 @@
 
     <?php
 
+    $typeDon = 3;
+
+    if(!empty($_GET) && array_key_exists("type", $_GET)) {
+        $typeDon = intval($_GET["type"]);
+    }
+
     // On va chercher les données locales
 
     include dirname(__FILE__) . '/fonctions/dataFile.php';
+    include dirname(__FILE__) . '/fonctions/code_generation.php';
     $file = loadFile();
 
     // On récupère les données du jour
@@ -27,7 +34,7 @@
     function search($tab)
     {
 
-        foreach ($tab as $key => $value) {
+        foreach ($tab as $value) {
             if (count($value) > 3) {
                 if ($value[3] == 0) {
                     return $value[0];
@@ -40,6 +47,9 @@
 
     $newHour = search($file);
 
+    /* recuperer heure et minute */
+    $recupeHeure = recupeHeure($newHour);
+
     // On remplace le ":" par un "h" pour avoir une heure lisible
 
     $newHour = str_replace(":", "h", $newHour);
@@ -49,7 +59,11 @@
     if ($_GET["rdv"] == "false") {
 
     ?>
-        <form action="exec/traitement_entree.php" method="post">
+        <form action="exec/execAddDonneur.php" method="post">
+            <input type="hidden" name="typeDon" value="<?php echo $typeDon ?>" />
+            <input type="hidden" name="typeRDV" value="2" />
+            <input type="hidden" name="heure" value="<?php echo $recupeHeure["heure"] ?>" />
+            <input type="hidden" name="minute" value="<?php echo $recupeHeure["heure"] ?>" />
             <div id="logo">
                 <img src="img/EFS-logo.png" alt="logo EFS" />
             </div>
@@ -76,7 +90,7 @@
                 <legend>Le code barre du donneur est le</legend>
 
                 <div>
-                    <input type="text" id="codeBar" name="code">
+                    <input type="text" id="codeBar" name="codeBar">
                 </div>
 
             </fieldset>
@@ -90,7 +104,9 @@
     } else {
         /* Sinon on affiche celui la */
     ?>
-        <form action="exec/traitement_entree.php" method="post">
+        <form action="exec/execAddDonneur.php" method="post">
+            <input type="hidden" name="typeDon" value="<?php echo $typeDon ?>" />
+            <input type="hidden" name="typeRDV" value="1" />
             <div id="logo">
                 <img src="img/EFS-logo.png" alt="logo EFS" />
             </div>
@@ -100,7 +116,7 @@
                 <legend>Heure de rendez-vous</legend>
 
                 <div>
-                    <input type="number" value="" /> : <input type="number" value="" />
+                    <input type="number" name="heure" value="" /> : <input type="number" name="minute" value="" />
                 </div>
 
             </fieldset>
@@ -109,7 +125,7 @@
                 <legend>Le code barre du donneur est le</legend>
 
                 <div>
-                    <input type="text" id="codeBar" name="code">
+                    <input type="text" id="codeBar" name="codeBar">
                 </div>
 
             </fieldset>

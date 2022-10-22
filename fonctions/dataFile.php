@@ -2,8 +2,6 @@
 
 /* lire le fichier de configuration */
 include dirname(__FILE__) . '/configMain.php';
-/* lire le fichier pour configurer le code de passage */
-include dirname(__FILE__) . '/code_generation.php';
 
 /* lire le fichier de l'agenda (provisoire) */
 /*
@@ -36,6 +34,14 @@ function loadFile(?string $nameFile = null):array {
     return $data;
 }
 
+/* afficher les 4 dernier chiffre du code-barre */
+function display($text) {
+    if(strlen($text) > 4) {
+        return substr($text, strlen($text)-4, 4);
+    }
+ return $text;
+}
+
 /**
  * Travailler avec le fichier de code pour creer l'ordre de passage.
  * Ligne sous le format : "code de passage"; "code-barre"; passe (false par defaut).
@@ -56,7 +62,7 @@ function saveLine(?string $timeCode, ?string $codeDoneur, bool $passe = false, ?
     $section = file_get_contents($nameFile, true);
     $tabsplit = str_split($section);
     $codecourt = "";
-    file_put_contents($nameFile, $section."\n".$timeCode . ";" . $codeDoneur . ";" .($passe?"true":"false"));
+    file_put_contents($nameFile, $section."\n".$timeCode . ";" . display($codeDoneur) . ";" .($passe?"true":"false"));
 }
 
 /*

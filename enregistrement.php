@@ -25,9 +25,9 @@
                     <select name="blood" id="bloodList">
 
                         <option value="">-- Choisissez une option --</option>
-                        <option value="Sang total">Sang total</option>
-                        <option value="Plasma">Plasma</option>
-                        <option value="Plaquette">Plaquette</option>
+                        <option value="3">Sang total</option>
+                        <option value="2">Plasma</option>
+                        <option value="1">Plaquette</option>
 
                     </select>
                 </div>

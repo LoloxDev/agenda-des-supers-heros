@@ -1,15 +1,6 @@
 <?php
 /* pour lire les fichier */
 include dirname(__FILE__) . '/fonctions/dataFile.php';
-
-/* afficher les 4 dernier chiffre du code-barre */
-function display($text) {
-    if(strlen($text) > 4) {
-        return substr($text, strlen($text)-4, 4);
-    }
- return $text;
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +22,7 @@ function display($text) {
                     if(trim($value[2]) == "false") { ?>
                         <tr>
                             <td>
-                                <?php echo display($value[1]); ?>
+                                <?php echo $value[1]; ?>
                             </td>
                         </tr>
                     <?php }

@@ -22,13 +22,11 @@ if ( isset( $_POST['submit'] ) ) {
 
     if ($rdv == "oui") {
         $rdv = true;
-        generate_code($heure, $type, $rdv);
-        header('Refresh: 0;../enregistrement2.php?rdv=true');
+        header('Refresh: 0;../enregistrement2.php?rdv=true&type='.$type);
         exit();
     } else {
         $rdv = false;
-        generate_code($heure, $type, $rdv);
-        header('Refresh: 0;../enregistrement2.php?rdv=false');
+        header('Refresh: 0;../enregistrement2.php?rdv=false&type='.$type);
         exit();
     }
     
