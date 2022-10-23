@@ -112,6 +112,18 @@ input {
 .passe {
   overflow-y: auto;
 }
+button {
+  padding: 10px 30px;
+  background-color: #e20020;
+  color: white;
+  border: none;
+  transition: 0.2s;
+  cursor: pointer;
+  box-shadow: inset 0px 0px 5px white;
+}
+button:hover {
+  transform: scale(1.05);
+}
 @media screen and (max-width: 974px) {
   body #logo {
     position: absolute;

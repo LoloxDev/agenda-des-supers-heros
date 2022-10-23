@@ -10,5 +10,5 @@ include dirname(__FILE__) . '/../fonctions/dataFile.php';
 donneurPasser($_GET['id']);
 
 /* rafraichit la page */
-header('Location: ./../patientPasser.php');
+header('Location: ./../donneurPasser.php');
 exit();

@@ -1,0 +1,15 @@
+{
+    "name": "pctronique/www",
+    "autoload": {
+        "psr-4": {
+            "Pctronique\\Www\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ludovic NAULOT",
+            "email": "pctronique@free.fr"
+        }
+    ],
+    "require": {}
+}
