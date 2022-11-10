@@ -126,6 +126,7 @@
     ?>
         <form action="exec/execAddDonneur.php" method="post">
             <input type="hidden" name="typeDon" value="<?php echo $typeDon ?>" />
+            <input type="hidden" id="oui" name="rdv" value="oui">
             <input type="hidden" name="typeRDV" value="1" />
             <div id="logo">
                 <img src="img/EFS-logo.png" alt="logo EFS" />
