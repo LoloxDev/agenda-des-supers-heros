@@ -1,7 +1,7 @@
 <?php
 
 /* pour lire les fichier */
-include dirname(__FILE__) . '/fonctions/dataFile.php';
+include dirname(__FILE__) . '/fonctions/code_generation.php';
 
 ?>
 
@@ -17,6 +17,11 @@ include dirname(__FILE__) . '/fonctions/dataFile.php';
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
     <meta http-equiv="Refresh" content="300"> 
+    <style>
+        body #form {
+            max-height: unset;
+        }
+    </style>
     <title>Document</title>
 </head>
 <body>

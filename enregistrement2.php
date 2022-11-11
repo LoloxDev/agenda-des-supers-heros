@@ -25,34 +25,14 @@
 
     // On va chercher les données locales
 
-    include dirname(__FILE__) . '/fonctions/dataFile.php';
-    include dirname(__FILE__) . '/fonctions/code_generation.php';
-    $file = loadFile();
-
-    // On récupère les données du jour
-
-    function search($tab)
-    {
-
-        foreach ($tab as $value) {
-            if (count($value) > 3) {
-                if ($value[3] == 0) {
-                    return $value[0];
-                }
-            }
-        }
-
-        return "0:0";
-    }
-
-    $newHour = search($file);
-
-    /* recuperer heure et minute */
-    $recupeHeure = recupeHeure($newHour);
+    include dirname(__FILE__) . '/fonctions/recupeHeure.php';
 
     // On remplace le ":" par un "h" pour avoir une heure lisible
 
-    $newHour = str_replace(":", "h", $newHour);
+    $newHour = searchHour($typeDon);
+
+    /* recuperer heure et minute */
+    $recupeHeure = recupeHeure(str_replace("h", ":", $newHour));
 
     /* Si le donneur n'a pas de rendez vous on affiche ce formulaire */
 
@@ -63,7 +43,7 @@
             <input type="hidden" name="typeDon" value="<?php echo $typeDon ?>" />
             <input type="hidden" name="typeRDV" value="2" />
             <input type="hidden" name="heure" value="<?php echo $recupeHeure["heure"] ?>" />
-            <input type="hidden" name="minute" value="<?php echo $recupeHeure["heure"] ?>" />
+            <input type="hidden" name="minute" value="<?php echo $recupeHeure["minute"] ?>" />
             <div id="logo">
                 <img src="img/EFS-logo.png" alt="logo EFS" />
             </div>

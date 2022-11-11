@@ -2,6 +2,11 @@
 
 /* recupere les configurations */
 include dirname(__FILE__) . '/configMain.php';
+/* recupere les configurations */
+include dirname(__FILE__) . '/dataFile.php';
+
+setlocale(LC_TIME, 'fr_FR');
+date_default_timezone_set('Europe/Paris');
 
 function recupeHeure(?string $newHour):array {
     $recupeHeure = ["heure" => 0, "minute" => 0];
@@ -28,9 +33,9 @@ function generate_code(?string $heure, int $type, bool $rdv):?string {
         $heure = $dt->format('H:i');
     }
     if ($type == 1) {
-        $result = date('Hi', strtotime($heure. ' -9 minutes'));
+        $result = date('Hi', strtotime($heure. ' -'.DURAT_PLAQUETTE.' minutes'));
     } elseif ($type == 2) {
-        $result = date('Hi', strtotime($heure. ' -8 minutes'));
+        $result = date('Hi', strtotime($heure. ' -'.DURAT_PLASMA.' minutes'));
     } else {
         $result = date('Hi', strtotime($heure));
     }
@@ -43,10 +48,7 @@ function generate_code(?string $heure, int $type, bool $rdv):?string {
         $result = $result."1";
     }
     // Ajoute le numero du rendez vous de la journée pour les cas speciaux
-    $counter = (int) file_get_contents(FILE_COUNTER) +1 ;
-  
-    $counter = str_pad($counter , 4 , "0" , STR_PAD_LEFT);
-    file_put_contents(FILE_COUNTER,$counter);
+    $counter = addAppointmentNumber() ;
     
     $result = $result.$counter;
 

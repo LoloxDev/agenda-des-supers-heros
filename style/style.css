@@ -109,9 +109,9 @@ body form input[type="submit"]:hover, td a:hover {
 input {
   text-align: center;
 }
-.passe {
+/*.passe {
   overflow-y: auto;
-}
+}*/
 button {
   padding: 10px 30px;
   background-color: #e20020;

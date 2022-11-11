@@ -4,7 +4,7 @@
  */
 
 /* pour travailler sur l'un des fichiers */
-include dirname(__FILE__) . '/../fonctions/dataFile.php';
+include dirname(__FILE__) . '/../fonctions/code_generation.php';
 
 /* signale que le donneur est passe */
 donneurPasser($_GET['id']);

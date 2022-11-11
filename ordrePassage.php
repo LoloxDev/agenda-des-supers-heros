@@ -1,6 +1,6 @@
 <?php
 /* pour lire les fichier */
-include dirname(__FILE__) . '/fonctions/dataFile.php';
+include dirname(__FILE__) . '/fonctions/code_generation.php';
 ?>
 
 <!DOCTYPE html>
