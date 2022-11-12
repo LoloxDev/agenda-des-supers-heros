@@ -1,0 +1,17 @@
+.list-tab {
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    padding: 10px 30px;
+    background-color: #e20020;
+    color: white;
+    transition: 0.2s;
+    cursor: pointer;
+    box-shadow: inset 0px 0px 5px white;
+}
+
+a:hover {
+    transform: scale(1.05);
+}

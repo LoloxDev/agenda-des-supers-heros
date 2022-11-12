@@ -16,7 +16,6 @@ include dirname(__FILE__) . '/fonctions/code_generation.php';
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
-    <meta http-equiv="Refresh" content="300"> 
     <style>
         body #form {
             max-height: unset;
@@ -50,5 +49,6 @@ include dirname(__FILE__) . '/fonctions/code_generation.php';
         </table>
         </div>
     </div>
+    <script src="./js/execReloadPage.js"></script>
 </body>
 </html>

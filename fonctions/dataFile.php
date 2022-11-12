@@ -50,11 +50,15 @@ function retireDate(?string $date, int $type):void {
             if($value[0]==$date && intval($value[3])==0 && intval($value[1]) == $type) {
                 $value[3] = 1;
             }
-            $valueCSV .= implode(";",$value)."\n";
+            $valueLine = trim(implode(";",$value));
+            if(!empty($valueLine)) {
+                $valueCSV .= $valueLine."\n";
+            }
         }
     }
 
-    file_put_contents($nameFile, $valueCSV);
+    $valueCSV = str_replace("\n\n", "\n", str_replace("\r", "\n", $valueCSV));
+    file_put_contents($nameFile, trim($valueCSV, "\n"));
 }
 
 function addDate(?string $date, int $type):void {
@@ -88,7 +92,9 @@ Merci de ne pas modifier $nameFile.
 function saveLine(?string $timeCode, ?string $codeDoneur, bool $passe = false):void {
     $nameFile = FILE_DATA_CODE;
     $section = file_get_contents($nameFile, true);
-    file_put_contents($nameFile, $section."\n".$timeCode . ";" . display($codeDoneur) . ";" .($passe?"true":"false"));
+    $valueCSV = $section."\n".$timeCode . ";" . display($codeDoneur) . ";" .($passe?"true":"false");
+    $valueCSV = str_replace("\n\n", "\n", str_replace("\r", "\n", $valueCSV));
+    file_put_contents($nameFile, $valueCSV);
 }
 
 /*
@@ -167,12 +173,42 @@ function addAppointmentNumber():?string {
 }
 
 /*
+Pour sauvegarder un message.
+*/
+function saveMessage(?string $message):void {
+    $nameFile = FILE_MESSAGE;
+    file_put_contents($nameFile, trim(str_replace("\r", "", str_replace("\n", "", $message))));
+}
+
+/*
+Pour afficher un message
+*/
+function loadMessage():?string {
+    $nameFile = FILE_MESSAGE;
+    return file_get_contents($nameFile, true);
+}
+
+/*
+Retourne un tableau json de sha1 des fichiers 
+*/
+function tabSha1File():?string {
+    $sha1File = [
+        'sha1CodeList' => "",
+        'sha1Message' => "",
+    ];
+    $sha1File['sha1CodeList'] = sha1_file(FILE_DATA_CODE);
+    $sha1File['sha1Message'] = sha1_file(FILE_MESSAGE);
+    return json_encode($sha1File);
+}
+
+/*
 effacer les valeur, pour repartir sur du codage propre en debut de journee.
 */
 function clearFile():void {
     file_put_contents(FILE_COUNTER, "0000");
     file_put_contents(FILE_DATA_DEF, "");
     file_put_contents(FILE_DATA_CODE, "");
+    file_put_contents(FILE_MESSAGE, "");
 }
 
 /*
@@ -182,4 +218,5 @@ function baseDeTest():void {
     file_put_contents(FILE_COUNTER, file_get_contents(FILE_COUNTER_DEF, true));
     file_put_contents(FILE_DATA_DEF, file_get_contents(FILE_DATA_DEF_DEF, true));
     file_put_contents(FILE_DATA_CODE, file_get_contents(FILE_DATA_CODE_DEF, true));
+    file_put_contents(FILE_MESSAGE, "");
 }

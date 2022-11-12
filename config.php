@@ -5,6 +5,7 @@ include dirname(__FILE__) . '/fonctions/code_generation.php';
 $fileCount = file_get_contents(FILE_COUNTER, true);
 $fileData = file_get_contents(FILE_DATA_DEF, true);
 $fileDataCode = file_get_contents(FILE_DATA_CODE, true);
+$fileMessage = loadMessage();
 ?>
 
 <!DOCTYPE html>
@@ -19,43 +20,44 @@ $fileDataCode = file_get_contents(FILE_DATA_CODE, true);
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
     <style>
         button {
-            width: 100%;
+            padding: 5px;
+            width: unset !important;
         }
 
         .all-value {
             display: flex;
             flex-direction: row;
             margin-bottom: unset !important;
-            width: unset !important;
+            width: 100% !important;
             height: unset;
             background-color: unset;
             box-shadow: unset;
             border-radius: unset;
             padding: unset;
             text-align: unset;
+            justify-content: space-between;
+        }
+
+        input, textarea, select {
+            width: 100%;
         }
 
         .all-value * {
             margin-bottom: unset !important;
-            width: unset !important;
+        }
+
+        .bt-config {
+            width: 100% !important;
         }
 
         .mod-value {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: 1fr auto;
             margin-bottom: unset !important;
-            width: unset !important;
-        }
-
-        .heur-value {
-            display: flex;
-            flex-direction: row;
-            margin-bottom: unset !important;
-            width: unset !important;
+            width: 100% !important;
         }
 
         label {
-            min-width: 86px;
             text-align: right;
             padding-right: 5px;
             margin-bottom: unset !important;
@@ -64,10 +66,6 @@ $fileDataCode = file_get_contents(FILE_DATA_CODE, true);
 
         body #form {
             max-height: unset;
-        }
-
-        select, input {
-            max-width:100px;
         }
 
         .display-file, .textarea {
@@ -107,10 +105,22 @@ $fileDataCode = file_get_contents(FILE_DATA_CODE, true);
                     </tr>
                     <tr>
                         <td>
+                            Un message
+                        </td>
+                        <td>
+                        <form class="all-value" action="exec/execMessage.php" method="post" name="messageForm">
+                                <textarea id="message" name="message"
+                                rows="2"><?= $fileMessage ?></textarea>
+                                <button id="validerMsg">Valider</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
                             Actualiser la page
                         </td>
                         <td>
-                            <button id="actualiser">Actualiser</button>
+                            <button class="bt-config" id="actualiser">Actualiser</button>
                         </td>
                     </tr>
                     <tr>
@@ -118,7 +128,7 @@ $fileDataCode = file_get_contents(FILE_DATA_CODE, true);
                             Initialiser les fichiers
                         </td>
                         <td>
-                            <button id="initFile">Initialiser</button>
+                            <button class="bt-config" id="initFile">Initialiser</button>
                         </td>
                     </tr>
                     <tr>
@@ -126,7 +136,7 @@ $fileDataCode = file_get_contents(FILE_DATA_CODE, true);
                             Valeurs par défaut
                         </td>
                         <td>
-                            <button id="defautFile">Défaut</button>
+                            <button class="bt-config" id="defautFile">Défaut</button>
                         </td>
                     </tr>
                     <tr>
@@ -136,23 +146,17 @@ $fileDataCode = file_get_contents(FILE_DATA_CODE, true);
                         <td>
                             <form class="all-value" action="exec/addHeure.php" method="post" name="test">
                                 <div class="mod-value">
-                                    <div class="heur-value">
                                         <label for="heur">heure</label>
                                         <input type="number" name="heure" value="" />
-                                    </div>
-                                    <div class="heur-value">
                                         <label for="heur">minute</label>
                                         <input type="number" name="minute" value="" />
-                                    </div>
-                                    <div class="heur-value">
-                                        <label for="blood">Choisissez<br />un type<br />de sang :</label>
+                                        <label for="blood">Choisissez un type de sang :</label>
                                         <select name="blood" id="bloodList">
                                             <option value=""></option>
                                             <option value="3">Sang total</option>
                                             <option value="2">Plasma</option>
                                             <option value="1">Plaquette</option>
                                         </select>
-                                    </div>
                                 </div>
                                 <button id="valider">Valider</button>
                             </form>
@@ -174,18 +178,7 @@ $fileDataCode = file_get_contents(FILE_DATA_CODE, true);
             </div>
         </div>
     </div>
-        <script>
-            document.getElementById("actualiser").addEventListener("click", function(event) {
-                location.reload(true);
-            });
-
-            document.getElementById("initFile").addEventListener("click", function(event) {
-                window.location.href = './exec/initFile.php';
-            });
-
-            document.getElementById("defautFile").addEventListener("click", function(event) {
-                window.location.href = './exec/defaultFile.php';
-            });
-        </script>
+    <script src="./js/config.js"></script>
+    <script src="./js/execReloadPage.js"></script>
 </body>
 </html>

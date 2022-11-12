@@ -3,7 +3,9 @@
 
 // On va chercher les données locales
 
-include dirname(__FILE__) . '/code_generation.php';
+if (!function_exists('recupeHeure')) {
+    include dirname(__FILE__) . '/code_generation.php';
+}
 
 setlocale(LC_TIME, 'fr_FR');
 date_default_timezone_set('Europe/Paris');

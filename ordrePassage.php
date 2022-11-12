@@ -1,6 +1,7 @@
 <?php
 /* pour lire les fichier */
 include dirname(__FILE__) . '/fonctions/code_generation.php';
+$message = loadMessage();
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +15,17 @@ include dirname(__FILE__) . '/fonctions/code_generation.php';
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
-    <meta http-equiv="refresh" content="30">
+    <style>
+        .alert {
+            width: 100%;
+            text-align: center;
+            padding: 5px;
+            background-color: red;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+    </style>
     <title>Document</title>
 </head>
 <body>
@@ -24,6 +35,11 @@ include dirname(__FILE__) . '/fonctions/code_generation.php';
         </div>
         <legend class="title">Le prochain donneur</legend>
         <div class="table">
+            <?php
+            if(!empty($message)) {
+                echo "<p class=\"alert\">".$message."</p>";
+            }
+            ?>
             <table>
                 <body>
                     <?php $values = listePassage();
@@ -40,5 +56,6 @@ include dirname(__FILE__) . '/fonctions/code_generation.php';
             </table>
         </div>
     </div>
+    <script src="./js/execReloadPage.js"></script>
 </body>
 </html>
