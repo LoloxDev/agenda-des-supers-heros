@@ -59,7 +59,7 @@ function timeSha1() {
                 postMessage([valueChange, emptyValue, false, ""]);
             } else {
                 postMessage([false, false, true, response]);
-                clearInterval(myInterval);
+                //clearInterval(myInterval);
                 isLoad = false;
             }
         });
@@ -74,6 +74,7 @@ onmessage = function(e) {
     clearInterval(myInterval);
   }
   if(isLoad) {
-    myInterval = setInterval(function () {timeSha1()}, e.data[0]);
+    timeSha1();
+    //myInterval = setInterval(function () {timeSha1()}, e.data[0]);
   }
 }

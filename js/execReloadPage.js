@@ -1,4 +1,5 @@
 let page = "./../exec/execSha1File.php";
+let myInterval = undefined;
 
 const myWorker = new Worker('./js/workerAfficheur.js');
 
@@ -11,4 +12,5 @@ myWorker.onmessage = (event) => {
     }
 };
 
-myWorker.postMessage([true, 1000, page]);
+myInterval = setInterval(function () {myWorker.postMessage([true, 1000, page])}, 1000);
+//myWorker.postMessage([true, 1000, page]);
