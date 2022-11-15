@@ -12,5 +12,5 @@ myWorker.onmessage = (event) => {
     }
 };
 
-myInterval = setInterval(function () {myWorker.postMessage([true, 1000, page])}, 1000);
+myInterval = setInterval(function () {myWorker.postMessage([true, 100, page])}, 100);
 //myWorker.postMessage([true, 1000, page]);
